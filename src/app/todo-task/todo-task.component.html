@@ -1,0 +1,9 @@
+<h3>Zadania do wykonania:</h3>
+      <ng-container *ngIf="tasksList.length > 0; else noTask">
+        <div *ngFor="let task of tasksList">
+          {{task}}
+          <button (click)="remove(task)">Usuń</button>
+          <button (click)="done(task)">Zrobione</button>
+        </div>
+      </ng-container>
+      <ng-template #noTask>Brak zadań, masz czas wolny!</ng-template>

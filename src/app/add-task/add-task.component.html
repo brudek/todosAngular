@@ -1,0 +1,5 @@
+<div>
+  Nowe zadanie:
+  <input [(ngModel)]="newTask">
+  <button [disabled]="!newTask"  (click)="add()">Dodaj</button>
+</div>
