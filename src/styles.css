@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+  padding: 20px;
+}
+
+.task{
+  background: lightgray;
+  margin: 5px;
+  padding: 0px 1px 6px 6px;
+}
+
+.odd-li{
+  background: lavender;
+  margin: 5px;
+}
+
+.btn{
+  padding: 2px 5px !important;
+  margin: 0px 0px 0px 3px;
+}

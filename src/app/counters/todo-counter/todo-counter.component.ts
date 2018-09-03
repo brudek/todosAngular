@@ -15,4 +15,8 @@ export class TodoCounterComponent implements OnInit {
   ngOnInit() {
   }
 
+  getColor(): string {
+    return this.tasksList.length >= 5 ? 'red' : 'green';
+  }
+
 }
