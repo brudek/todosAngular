@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { TasksService } from '../../services/tasks.service';
 
 @Component({
   selector: 'app-todo-counter',
@@ -7,10 +8,15 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TodoCounterComponent implements OnInit {
 
-  @Input()
   tasksList: Array<string>;
 
-  constructor() { }
+  constructor(private tasksService: TasksService) {
+    this.tasksService.getTasksListObs().subscribe(
+      tasks => {
+        this.tasksList = tasks;
+      }
+    );
+   }
 
   ngOnInit() {
   }

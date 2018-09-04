@@ -7,12 +7,6 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CountersComponent implements OnInit {
 
-  @Input()
-  tasksList: Array<string>;
-
-  @Input()
-  tasksDone: Array<string>;
-
   constructor() { }
 
   ngOnInit() {
