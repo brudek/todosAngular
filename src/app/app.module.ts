@@ -9,6 +9,8 @@ import { DoneTaskComponent } from './done-task/done-task.component';
 import { CountersComponent } from './counters/counters.component';
 import { TodoCounterComponent } from './counters/todo-counter/todo-counter.component';
 import { DoneCounterComponent } from './counters/done-counter/done-counter.component';
+import { CheckedDirective } from './shared/checked.directive';
+import { DateDirective } from './shared/date.directive';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { DoneCounterComponent } from './counters/done-counter/done-counter.compo
     DoneTaskComponent,
     CountersComponent,
     TodoCounterComponent,
-    DoneCounterComponent
+    DoneCounterComponent,
+    CheckedDirective,
+    DateDirective
   ],
   imports: [
     BrowserModule,

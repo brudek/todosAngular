@@ -1,7 +1,7 @@
 <h3>Zadania do wykonania</h3>
       <ng-container *ngIf="tasksList.length > 0; else noTask">
-        <div *ngFor="let task of tasksList; let odd = odd" class="task"  [ngClass]="{'odd-li' : odd, 'last-li' : tasksList.length == 1}">
-          {{task}}
+        <div appDate [date]="task.created" *ngFor="let task of tasksList; let odd = odd" class="task"  [ngClass]="{'odd-li' : odd, 'last-li' : tasksList.length == 1}">
+          {{task.name}}
           <button type="button" class="btn btn-danger" (click)="remove(task)">Usuń</button>
           <button type="button" class="btn btn-success" (click)="done(task)">Zrobione</button>
         </div>

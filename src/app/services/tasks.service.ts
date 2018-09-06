@@ -1,43 +1,49 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Task } from '../models/task';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TasksService {
 
-  private tasksList: Array<string> = [];
-  private tasksDone: Array<string> = [];
+  private tasksList: Array<Task> = [];
+  private tasksDone: Array<Task> = [];
 
-  private tasksListObs = new BehaviorSubject<Array<string>>(this.tasksList);
-  private tasksDoneObs = new BehaviorSubject<Array<string>>(this.tasksDone);
+  private tasksListObs = new BehaviorSubject<Array<Task>>([]);
+  private tasksDoneObs = new BehaviorSubject<Array<Task>>([]);
 
   constructor() {
-    this.tasksList = ['Sprzątanie pokoju', 'Gotowanie', 'Nauka angielskiego', 'Spacer'];
+    this.tasksList = [
+      {name: 'Sprzątanie pokoju', created: new Date()},
+      {name: 'Gotowanie', created: new Date()},
+      {name: 'Nauka angielskiego', created: new Date()},
+      {name: 'Spacer', created: new Date()}
+    ];
     this.tasksListObs.next(this.tasksList);
   }
 
-  add(task: string) {
+  add(task: Task) {
     this.tasksList.push(task);
     this.tasksListObs.next(this.tasksList);
   }
 
-  remove(task: string) {
+  remove(task: Task) {
     this.tasksList = this.tasksList.filter( e => e !== task);
     this.tasksListObs.next(this.tasksList);
   }
 
-  done(task: string) {
+  done(task: Task) {
     this.tasksDone.push(task);
     this.remove(task);
     this.tasksDoneObs.next(this.tasksDone);
   }
 
-  getTasksListObs(): Observable<Array<string>> {
+  getTasksListObs(): Observable<Array<Task>> {
     return this.tasksListObs.asObservable();
   }
 
-  getTasksDoneObs(): Observable<Array<string>> {
+  getTasksDoneObs(): Observable<Array<Task>> {
     return this.tasksDoneObs.asObservable();
   }
 }
