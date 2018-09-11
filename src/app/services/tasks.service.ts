@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Task } from '../models/task';
 
 @Injectable({
@@ -9,9 +9,11 @@ export class TasksService {
 
   private tasksList: Array<Task> = [];
   private tasksDone: Array<Task> = [];
+  private firstFive: boolean;
 
   private tasksListObs = new BehaviorSubject<Array<Task>>([]);
   private tasksDoneObs = new BehaviorSubject<Array<Task>>([]);
+  private firstFiveObs = new Subject();
 
   constructor() {
     this.tasksList = [
@@ -39,11 +41,20 @@ export class TasksService {
     this.tasksDoneObs.next(this.tasksDone);
   }
 
+  closePopup() {
+    this.firstFive = false;
+    this.firstFiveObs.next(this.firstFive);
+  }
+
   getTasksListObs(): Observable<Array<Task>> {
     return this.tasksListObs.asObservable();
   }
 
   getTasksDoneObs(): Observable<Array<Task>> {
     return this.tasksDoneObs.asObservable();
+  }
+
+  getFirstFiveObs(): Observable<{}> {
+    return this.firstFiveObs.asObservable();
   }
 }

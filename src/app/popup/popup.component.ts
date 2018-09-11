@@ -21,4 +21,9 @@ export class PopupComponent implements OnInit {
   ngOnInit() {
   }
 
+  closePopup() {
+    this.firstFive = false;
+    this.taskService.closePopup();
+  }
+
 }

@@ -20,16 +20,20 @@ export class DateDirective {
     this.renderer.addClass(this.el.nativeElement, 'active');
     this.paragraph.innerHTML = this.date.toLocaleString();
     this.renderer.appendChild(this.el.nativeElement, this.paragraph);
-    this.eventX = eventDate.clientX;
-    this.eventY = eventDate.clientY;
-
-
-    console.log(this.eventX + ' ' + this.eventY);
   }
 
   @HostListener('mouseleave')
   mouseLeave(eventDate: Event) {
     this.renderer.removeChild(this.el.nativeElement, this.paragraph);
+  }
+
+  // test click event for tooltip location
+  @HostListener('click', ['$event'])
+  mouseClick(eventDate: MouseEvent) {
+    this.eventX = eventDate.clientX;
+    this.eventY = eventDate.clientY;
+
+    console.log(this.eventX + ' ' + this.eventY);
   }
 
 }
