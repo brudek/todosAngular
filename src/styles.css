@@ -4,6 +4,7 @@ html, body{
   height: 100%;
   text-transform: uppercase !important;
   font-weight: 500;
+  font-family: cursive !important;
 }
 
 body{
@@ -40,7 +41,6 @@ h2{
 }
 
 .container{
-  display: flex;
   justify-content: space-around;
   width: 100%;
   padding: 20px 0;
@@ -48,6 +48,12 @@ h2{
   margin: 10px auto;
   box-shadow: 0px 2px 5px rgba(0,0,0,.3);
   background: rgba(255,255,255,.8);
+}
+
+@media screen and (min-width: 768px){
+  .container{
+    display: flex;
+  }
 }
 
 .no-flex{
@@ -59,4 +65,47 @@ h2{
   background: #fff;
   padding: 8px;
   box-shadow: 1px 1px 6px rgba(0,0,0,.5);
+  opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 0.3s;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+
+.popup-bg{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: rgba(0,0,0,.8);
+  background-image: url(../src/assets/thumb.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.popup{
+  position: absolute;
+  width: 90%;
+  text-align: center;
+  top: 45%;
+  background: rgba(255,255,255,0.77);
+  left: 5%;
+  padding: 50px 20px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,.6);
+}
+
+.popup h2{
+  margin-bottom: 25px;
 }

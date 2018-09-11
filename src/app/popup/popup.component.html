@@ -1,0 +1,7 @@
+<div *ngIf="firstFive" [ngClass]="'popup-bg'">
+  <div [ngClass]="'popup'">
+    <h2>Wykonano dziś 5 zadań! Super!</h2>
+    <button (click)="firstFive = !firstFive">Powrót</button>
+  </div>
+</div>
+

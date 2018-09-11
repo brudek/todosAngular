@@ -2,3 +2,5 @@
 <div appDate appChecked [date]="done.end" *ngFor="let done of tasksDone; let odd = odd;" class="task" [ngClass]="{'odd-li' : odd}">
   {{done.name}}
 </div>
+<app-popup *ngIf="tasksDone.length == 5"></app-popup>
+

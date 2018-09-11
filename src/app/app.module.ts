@@ -11,6 +11,7 @@ import { TodoCounterComponent } from './counters/todo-counter/todo-counter.compo
 import { DoneCounterComponent } from './counters/done-counter/done-counter.component';
 import { CheckedDirective } from './shared/checked.directive';
 import { DateDirective } from './shared/date.directive';
+import { PopupComponent } from './popup/popup.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DateDirective } from './shared/date.directive';
     TodoCounterComponent,
     DoneCounterComponent,
     CheckedDirective,
-    DateDirective
+    DateDirective,
+    PopupComponent
   ],
   imports: [
     BrowserModule,
