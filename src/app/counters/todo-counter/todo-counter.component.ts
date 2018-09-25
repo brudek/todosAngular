@@ -14,7 +14,7 @@ export class TodoCounterComponent implements OnInit {
   constructor(private tasksService: TasksService) {
     this.tasksService.getTasksListObs().subscribe(
       tasks => {
-        this.tasksList = tasks;
+        this.tasksList = tasks.filter(task => task.isDone === false);
       }
     );
    }

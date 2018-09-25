@@ -1,6 +1,16 @@
 <h3>Zadania wykonane</h3>
-<div appDate appChecked [date]="done.end" *ngFor="let done of tasksDone; let odd = odd;" class="task" [ngClass]="{'odd-li' : odd}">
-  {{done.name}}
+<div class="sort-buttons">
+  <a class="alpha-btn" (click)="sortBy('alpha')">Sortuj alfabetycznie</a><a class="date-btn" (click)="sortBy('date')">Sortuj wg dat</a>
+</div>
+<div *ngIf="sort == 'alpha'">
+  <div appDate appChecked [date]="done.end" *ngFor="let done of tasksDone | sortName; let odd = odd;" class="task" [ngClass]="{'odd-li' : odd}">
+    {{done.name | transformTask: ' - gut dziap ;)'}}
+  </div>
+</div>
+<div *ngIf="sort == 'date'">
+  <div appDate appChecked [date]="done.end" *ngFor="let done of tasksDone; let odd = odd;" class="task" [ngClass]="{'odd-li' : odd}">
+    {{done.name | transformTask: ' - gut dziap ;)'}}
+  </div>
 </div>
 <app-popup *ngIf="tasksDone.length == 5"></app-popup>
 

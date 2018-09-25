@@ -12,8 +12,8 @@ export class DoneCounterComponent implements OnInit {
   tasksDone: Array<Task> = [];
 
   constructor(private tasksService: TasksService) {
-    this.tasksService.getTasksDoneObs().subscribe( tasks => {
-      this.tasksDone = tasks;
+    this.tasksService.getTasksListObs().subscribe( tasks => {
+      this.tasksDone = tasks.filter(task => task.isDone === true);
     });
    }
 

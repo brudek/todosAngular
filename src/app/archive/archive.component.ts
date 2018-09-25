@@ -1,29 +1,21 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { TasksService } from '../services/tasks.service';
+import { Component, OnInit } from '@angular/core';
 import { Task } from '../models/task';
+import { TasksService } from '../services/tasks.service';
 
 @Component({
-  selector: 'app-done-task',
-  templateUrl: './done-task.component.html',
-  styleUrls: ['./done-task.component.css']
+  selector: 'app-archive',
+  templateUrl: './archive.component.html',
+  styleUrls: ['./archive.component.css']
 })
-export class DoneTaskComponent implements OnInit {
+export class ArchiveComponent {
 
   tasksDone: Array<Task>;
-  firstFive: boolean;
   sort = 'date';
 
   constructor(private tasksService: TasksService) {
     this.tasksService.getTasksListObs().subscribe((tasks: Array<Task>) => {
       this.tasksDone = tasks.filter(task => task.isDone === true);
     });
-
-    this.tasksService.getFirstFiveObs().subscribe( (first: boolean) => {
-      this.firstFive = first;
-    });
-  }
-
-  ngOnInit() {
   }
 
   sortBy(param: string) {

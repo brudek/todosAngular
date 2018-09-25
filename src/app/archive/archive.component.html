@@ -1,0 +1,14 @@
+<h3>Historia</h3>
+<div class="sort-buttons">
+  <a class="alpha-btn" (click)="sortBy('alpha')">Sortuj alfabetycznie</a><a class="date-btn" (click)="sortBy('date')">Sortuj wg dat</a>
+</div>
+<div *ngIf="sort == 'alpha'">
+  <div appDate [date]="done.end" *ngFor="let done of tasksDone | sortName; let odd = odd;">
+    {{done.name}}
+  </div>
+</div>
+<div *ngIf="sort == 'date'">
+  <div appDate [date]="done.end" *ngFor="let done of tasksDone; let odd = odd;">
+    {{done.name}}
+  </div>
+</div>

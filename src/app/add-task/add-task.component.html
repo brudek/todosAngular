@@ -1,5 +1,5 @@
 <div>
   Nowe zadanie:
   <input [(ngModel)]="newTask" (keyup.enter)="add()">
-  <button [disabled]="!newTask"  (click)="add()" >Dodaj</button>
+  <button [ngClass]="(!newTask)? 'btn btn-secondary' : 'btn btn-success' " [disabled]="!newTask"  (click)="add()" >Dodaj</button>
 </div>

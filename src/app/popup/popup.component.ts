@@ -13,8 +13,8 @@ export class PopupComponent implements OnInit {
   firstFive = true;
 
   constructor(private taskService: TasksService) {
-    this.taskService.getTasksDoneObs().subscribe( (tasks: Array<Task>) => {
-      this.tasksDone = tasks;
+    this.taskService.getTasksListObs().subscribe( (tasks: Array<Task>) => {
+      this.tasksDone = tasks.filter(task => task.isDone === true);
     });
    }
 

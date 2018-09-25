@@ -10,10 +10,11 @@ import { Task } from '../models/task';
 export class TodoTaskComponent implements OnInit {
 
   tasksList = [];
+  sort = 'date';
 
   constructor(private tasksService: TasksService) {
-    this.tasksService.getTasksListObs().subscribe( (tasks: Array<Task>) => {
-      this.tasksList = tasks;
+    this.tasksService.getTasksListObs().subscribe((tasks: Array<Task>) => {
+      this.tasksList = tasks.filter(task => task.isDone === false);
     });
   }
 
@@ -21,12 +22,24 @@ export class TodoTaskComponent implements OnInit {
   }
 
   remove(task: Task) {
-   this.tasksService.remove(task);
+    this.tasksService.remove(task);
   }
 
   done(task: Task) {
-    task.end = new Date();
+    task.end = new Date().toLocaleString();
+    task.isDone = true;
     this.tasksService.done(task);
+  }
+
+  sortBy(param: string) {
+    if (param === 'alpha') {
+      this.sort = 'alpha';
+    } else {
+      this.sort = 'date';
+    }
+    this.tasksService.getTasksListObs().subscribe((tasks: Array<Task>) => {
+      this.tasksList = tasks.filter( task => task.isDone === false).slice();
+    });
   }
 
 }

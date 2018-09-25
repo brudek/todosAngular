@@ -1,4 +1,4 @@
-<div>
+<perfect-scrollbar>
   <div class="container no-flex">
     <h2>Lista zadań</h2>
     <app-counters></app-counters>
@@ -6,13 +6,16 @@
   <div class="container">
     <app-add-task></app-add-task>
   </div>
-
   <div class="container">
-    <div>
-      <app-todo-task></app-todo-task>
+    <button [ngClass]="'btn primary'" routerLink="todoTask" routerLinkActive="active">Do wykonania</button><button routerLink="doneTask" [ngClass]="'btn primary'" routerLinkActive="active">Wykonane</button>
     </div>
-    <div>
-      <app-done-task></app-done-task>
-    </div>
+  <div class="container no-flex">
+    <router-outlet></router-outlet>
   </div>
-</div>
+  <div class="container">
+    <button [ngClass]="'btn btn-info'" (click)="save()">Zapisz</button>
+  </div>
+  <div class="container no-flex">
+    <app-archive></app-archive>
+  </div>
+</perfect-scrollbar>
